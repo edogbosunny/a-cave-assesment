@@ -3,8 +3,13 @@ import cluster from 'cluster';
 import mongoose from 'mongoose';
 import * as os from 'os';
 import http from 'http';
-
+import * as dotenv from 'dotenv';
 import keys from './src/config/keys';
+
+dotenv.config({ silent: true });
+
+// require('dotenv').config({ silent: true });
+
 
 const port = process.env.PORT || 5000;
 
