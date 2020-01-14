@@ -1,12 +1,26 @@
 import express from 'express';
 import cluster from 'cluster';
+import mongoose from 'mongoose';
 import * as os from 'os';
 import http from 'http';
+
+import keys from './src/config/keys';
 
 const port = process.env.PORT || 5000;
 
 
 const app = express();
+
+/**
+ * DB Config
+ */
+mongoose.connect(keys.mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => console.log('Mongo DB Connected'))
+  .catch((err) => console.log(err));
+
 const workers = [];
 
 /**
