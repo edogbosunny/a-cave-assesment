@@ -3,23 +3,54 @@ import cluster from 'cluster';
 import mongoose from 'mongoose';
 import * as os from 'os';
 import http from 'http';
+import bodyParser from 'body-parser';
 import * as dotenv from 'dotenv';
+
 import keys from './src/config/keys';
+import { authentification, que, dashboard, course } from './src/routes';
 
 dotenv.config({ silent: true });
 
-// require('dotenv').config({ silent: true });
-
-
 const port = process.env.PORT || 5000;
 
-
 const app = express();
+
+
+// // parse application/json
+app.use(bodyParser.json({
+  limit: '2000kb',
+}));
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('/api/v1/', authentification);
+app.use('/api/v1/', que);
+app.use('/api/v1/', dashboard);
+app.use('/api/v1/', course);
+
+
+app.get('/', (req, res) => {
+  res.json({ msg: 'homepage' });
+});
+
+app.get('*', (req, res) => res.status(404).json({
+  status: false,
+  Data: {
+    message: 'Page not Found',
+  },
+}));
+
+app.post('*', (req, res) => res.status(404).json({
+  status: false,
+  Data: {
+    message: 'Page not Found',
+  },
+}));
 
 /**
  * DB Config
  */
 mongoose.connect(keys.mongoURI, {
+  useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -37,7 +68,7 @@ const setupWorkerProcesses = () => {
   console.log('Master cluster setting up ' + numCores + ' workers');
   // iterate on number of cores need to be utilized by an application
   // current example will utilize all of them
-  for (let i = 0; i < numCores; i += 1) {
+  for (let i = 0; i < 1; i += 1) {
     // creating workers and pushing reference in an array
     // these references can be used to receive messages from workers
     workers.push(cluster.fork());
@@ -81,11 +112,6 @@ const setUpExpress = () => {
   });
 };
 
-/**
- * Setup server either with clustering or without it
- * @param isClusterRequired
- * @constructor
- */
 const setupServer = (isClusterRequired) => {
   // if it is a master process then call setting up worker process
   if (isClusterRequired && cluster.isMaster) {
