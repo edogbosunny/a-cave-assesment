@@ -11,4 +11,3 @@ export const sendSmS = (payload) => {
     body: payload.body
   }).then((message) => console.log(message.sid));
 }
-// export default sendSmS;

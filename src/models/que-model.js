@@ -15,3 +15,4 @@ const QueSchema = mongoose.Schema({
 
 const QueCollection = mongoose.model('QueCollection', QueSchema);
 export default QueCollection;
+// fully implement the cronjob
