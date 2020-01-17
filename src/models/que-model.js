@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const QueSchema = mongoose.Schema({
   phone_number: String,
-  cron_runtime: Date,
+  time_preference: Date, // time that the cron should run
   course_link: String,
   module_title: String,
   course_title: String,
@@ -15,3 +15,4 @@ const QueSchema = mongoose.Schema({
 
 const QueCollection = mongoose.model('QueCollection', QueSchema);
 export default QueCollection;
+// fully implement the cronjob
