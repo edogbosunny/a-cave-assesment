@@ -3,6 +3,7 @@ import cluster from 'cluster';
 import mongoose from 'mongoose';
 import * as os from 'os';
 import http from 'http';
+var cron = require('node-cron');
 import bodyParser from 'body-parser';
 import * as dotenv from 'dotenv';
 
@@ -57,6 +58,9 @@ mongoose.connect(keys.mongoURI, {
   .then(() => console.log('Mongo DB Connected'))
   .catch((err) => console.log(err));
 
+cron.schedule('*/2 * * * *', () => {
+  console.log('running a task every two minutes');
+});
 const workers = [];
 
 /**
