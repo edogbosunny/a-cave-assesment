@@ -4,7 +4,11 @@
 ## Accessing the  server
 
 - clone repository to your local machine
-- run ```npm install``` and watch the majic happen.
+- run ```npm install``` and watch the magic happen.
+
+using Docker: 
+- docker build -t <your username>/node-web-app .
+- docker run -p 49160:8080 -d <your username>/a-cave-assesment
 
 #### env params needed.
 ```
