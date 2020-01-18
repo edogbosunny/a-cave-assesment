@@ -7,6 +7,7 @@
 - run ```npm install``` and watch the majic happen.
 
 #### env params needed.
+```
 MONGO_URI=""
 MONGODB_TIMETONE_URI=""
 TOKEN_SECRET=""
@@ -16,7 +17,7 @@ TWILIO_AUTH_TOKEN=""
 CELL_PHONE_NUMBER=""
 TEST_MONGO_URI=""
 MONGO_DB_NAME=""
-PROD_DATABASE_URI=""
+PROD_DATABASE_URI="" ```
 
 #### payload required
 - create a user
