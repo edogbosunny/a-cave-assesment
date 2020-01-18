@@ -25,23 +25,6 @@ const addToQue = async (req, res) => {
       error
     })
   }
-
-
-
-
-
-
-  // try {
-  //   const data = await DashboardRepository.createQue({ phoneNumber: '123' }, req.body);
-  //   console.log('data don show--->', data);
-
-  // } catch (error) {
-  //   console.log(error)
-  //   return res.status(500).send({
-  //     message: 'Internal server error',
-  //     errors: data.errors
-  //   });
-  // }
 }
 
 export default {

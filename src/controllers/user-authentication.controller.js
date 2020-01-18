@@ -22,7 +22,6 @@ const signupUser = async (req, res) => {
   const { errors, isValid } = validateSignupInput(updatedUserResponse);
   const checkExistingUser = await UserAuthenticationRepository.get({ phone_number });
   const data = await UserAuthenticationRepository.signUp(updatedUserResponse)
-  console.log('kfkfkk', data._id)
   try {
     const token = getToken(data._id, is_admin);
     if (isValid) {

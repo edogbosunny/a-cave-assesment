@@ -27,11 +27,6 @@ const getTimeZone = (timezone) => {
   var centralOffset = now.utcOffset();
   var diffInHours = localOffset - centralOffset;
   return diffInHours;
-
-
-  // var jun = momentTZ("2014-06-01T12:00:00Z");
-  // const a = jun.tz('Africa/Nairobi').format('Z');
-  // console.log('---->', a);
 }
 
 export default { getRange, getAddedDate, getTimeZone };
