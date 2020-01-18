@@ -7,7 +7,7 @@ var cron = require('node-cron');
 import bodyParser from 'body-parser';
 import * as dotenv from 'dotenv';
 
-import keys from './src/config/keys';
+import {dbConfig} from './src/config/keys';
 import { authentification, que, dashboard, course } from './src/routes';
 
 dotenv.config({ silent: true });
@@ -15,8 +15,6 @@ dotenv.config({ silent: true });
 const port = process.env.PORT || 5000;
 
 const app = express();
-
-
 // // parse application/json
 app.use(bodyParser.json({
   limit: '2000kb',
@@ -50,7 +48,7 @@ app.post('*', (req, res) => res.status(404).json({
 /**
  * DB Config
  */
-mongoose.connect(keys.mongoURI, {
+mongoose.connect(dbConfig(), {
   useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true,

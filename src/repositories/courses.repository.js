@@ -8,10 +8,6 @@ class CourseModuleRepository {
     try {
       const courseData = await new CourseModule(payload);
       courseData.save();
-      // const a = courseData.courses.map(response => {
-      //   console.log('----->', response.courseTitle)
-      // })
-
       return courseData;
     } catch (error) {
       console.log('error occurred while saving course', error.message);
