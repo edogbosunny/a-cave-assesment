@@ -70,7 +70,7 @@ const setupWorkerProcesses = () => {
   console.log('Master cluster setting up ' + numCores + ' workers');
   // iterate on number of cores need to be utilized by an application
   // current example will utilize all of them
-  for (let i = 0; i < 1; i += 1) {
+  for (let i = 0; i < numCores; i += 1) {
     // creating workers and pushing reference in an array
     // these references can be used to receive messages from workers
     workers.push(cluster.fork());
