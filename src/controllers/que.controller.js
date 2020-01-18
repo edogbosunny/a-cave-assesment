@@ -6,7 +6,7 @@ import QueRepository from '../repositories/que.repository';
 const addQue = async (req, res) => {
   try {
     const data = await QueRepository.createQue(req.body)
-    console.log('data don show--->', data);
+
 
   } catch (error) {
     console.log(error)

@@ -18,7 +18,6 @@ class QueRepository {
     try {
       const a = await QueModel
         .find()
-      console.log('aaa', a);
       return a;
     } catch (error) {
       console.log('error occured fetching que', error.message);

@@ -19,8 +19,6 @@ class UserPreferenceRepository {
 
       const endDate = await DateHelper.getAddedDate(coursesData.courses.length);
       const dateRange = await DateHelper.getRange(moment().format("YYYY-MM-DD"), endDate)
-      // console.log(moment().format("YYYY-MM-DD"))
-      // console.log(GetTimezone);
 
 
       const userData = await User.findById(userId);
@@ -47,7 +45,6 @@ class UserPreferenceRepository {
           body: response.moduleTitle
         }
         sendSmS(twilloPayload);
-        // allMapped.push(createQue.save());
         return preferenceQuePayload;
         // wip. flesh out chrone calculations
       })

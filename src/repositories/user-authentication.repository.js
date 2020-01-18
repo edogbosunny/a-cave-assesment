@@ -16,8 +16,6 @@ class UserAuthenticationRepository {
     try {
       const a = await User
         .find(where)
-
-      console.log('aaa', a);
       return a;
     } catch (error) {
       console.log('error occured getting group posts', error.message);
